@@ -1,0 +1,49 @@
+name: Run
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  schedule:
+    # every Monday at 6am
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    
+jobs:
+  collect:
+    strategy:
+      matrix:
+        max-age: [30, 90]
+      # avoid conflicts when committing
+      max-parallel: 1
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version-file: 'go.mod'
+    - name: Run script and save results to file
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: |
+        d=$(date +"%Y_%m_%d")
+        out="results/$d"
+        mkdir -p "$out"
+        go run . -num-workers 5 -max-age ${{ matrix.max-age }} > "$out/results-${{ matrix.max-age }}.txt"
+    - uses: EndBug/add-and-commit@v9
+      if: ${{ github.event_name == 'schedule' }}
+      with:
+        add: "results"
+        default_author: github_actions
+        message: "Weekly update for flaky tests (max-age: ${{ matrix.max-age }})"
+        signoff: false
+    - uses: EndBug/add-and-commit@v9
+      if: ${{ github.event_name == 'workflow_dispatch'}}
+      with:
+        add: "results"
+        default_author: github_actions
+        message: "Manual update for flaky tests (max-age: ${{ matrix.max-age }})"
+        signoff: false
