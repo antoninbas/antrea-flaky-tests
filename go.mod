@@ -5,7 +5,7 @@ go 1.21.0
 require (
 	github.com/google/go-github/v54 v54.0.0
 	github.com/olekukonko/tablewriter v0.0.5
-	github.com/spf13/afero v1.9.5
+	github.com/spf13/afero v1.10.0
 	golang.org/x/oauth2 v0.11.0
 )
 
