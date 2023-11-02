@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path"
 	"regexp"
 	"slices"
 	"strings"
@@ -88,8 +89,16 @@ func processFailedRunAttempt(ctx context.Context, logger *slog.Logger, client *g
 	if err != nil {
 		return err
 	}
+	fileFilter := func(name string) bool {
+		// ignore files in directories
+		if path.Base(name) != name {
+			return false
+		}
+		return strings.Contains(name, "E2e tests on a Kind cluster") || strings.Contains(name, "NetworkPolicy conformance tests on a Kind cluster")
+	}
+	count := 0
 	for _, f := range r.File {
-		if !strings.HasPrefix(f.Name, "1_E2e tests on a Kind cluster") {
+		if !fileFilter(f.Name) {
 			continue
 		}
 		logger.DebugContext(ctx, "Found file", "name", f.Name)
@@ -105,11 +114,15 @@ func processFailedRunAttempt(ctx context.Context, logger *slog.Logger, client *g
 			}
 			failedTests := getFailedTests(b)
 			logger.DebugContext(ctx, "Failed tests", "tests", failedTests)
+			count += len(failedTests)
 			failedTestsCh <- failedTests
 			return nil
 		}(); err != nil {
 			logger.ErrorContext(ctx, "Error when processing file, skipping", "name", f.Name, "error", err)
 		}
+	}
+	if count == 0 {
+		logger.DebugContext(ctx, "No failed test found for failed workflow, failures may not have been caused by E2e tests")
 	}
 	return nil
 }
