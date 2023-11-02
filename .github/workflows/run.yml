@@ -16,7 +16,7 @@ jobs:
   collect:
     strategy:
       matrix:
-        max-age: [30, 90]
+        max-age: [7, 30, 90]
       # avoid conflicts when committing
       max-parallel: 1
     runs-on: ubuntu-latest
