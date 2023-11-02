@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"path"
+	"path/filepath"
 	"regexp"
 	"slices"
 	"strings"
@@ -91,7 +91,7 @@ func processFailedRunAttempt(ctx context.Context, logger *slog.Logger, client *g
 	}
 	fileFilter := func(name string) bool {
 		// ignore files in directories
-		if path.Base(name) != name {
+		if filepath.Base(name) != name {
 			return false
 		}
 		return strings.Contains(name, "E2e tests on a Kind cluster") || strings.Contains(name, "NetworkPolicy conformance tests on a Kind cluster")
