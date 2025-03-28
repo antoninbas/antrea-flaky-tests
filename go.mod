@@ -1,12 +1,13 @@
 module antrea-flaky-tests
 
 go 1.21.0
+toolchain go1.23.6
 
 require (
 	github.com/google/go-github/v54 v54.0.0
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/spf13/afero v1.12.0
-	golang.org/x/oauth2 v0.25.0
+	golang.org/x/oauth2 v0.27.0
 )
 
 require (
