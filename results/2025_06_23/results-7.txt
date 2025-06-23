@@ -1,0 +1,42 @@
++---------------------+-----------------+--------------+
+| SUCCESSFUL ATTEMPTS | FAILED ATTEMPTS | FAILURE RATE |
++---------------------+-----------------+--------------+
+|                   5 |               3 |     0.375000 |
++---------------------+-----------------+--------------+
+Summary
++---------------+------------------------+--------------------+----------------------------------------+----------+--------------+
+|   TEST NAME   |                        |                    |                                        | FAILURES | FAILURE RATE |
++---------------+------------------------+--------------------+----------------------------------------+----------+--------------+
+| TestTraceflow |                        |                    |                                        |        2 |     0.250000 |
++               +------------------------+--------------------+----------------------------------------+----------+--------------+
+|               | testTraceflowIntraNode |                    |                                        |        2 |     0.250000 |
++               +                        +--------------------+----------------------------------------+----------+--------------+
+|               |                        | traceflowGroupTest |                                        |        2 |     0.250000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeICMPDstIPLiveTraceflowIPv4    |        1 |     0.125000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeICMPDstIPTraceflowIPv4        |        1 |     0.125000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeICMPSrcIPDroppedTraceflowIPv4 |        2 |     0.250000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeTraceflowIPv4                 |        1 |     0.125000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeUDPDstIPTraceflowIPv4         |        1 |     0.125000 |
++               +                        +                    +----------------------------------------+----------+--------------+
+|               |                        |                    | intraNodeUDPDstPodTraceflowIPv4        |        1 |     0.125000 |
++---------------+------------------------+--------------------+----------------------------------------+----------+--------------+
+All failures
++------------------------------------------------------------------------------------------------+----------+--------------+
+|                                           TEST NAME                                            | FAILURES | FAILURE RATE |
++------------------------------------------------------------------------------------------------+----------+--------------+
+| TestTraceflow                                                                                  |        2 |     0.250000 |
+| TestTraceflow/testTraceflowIntraNode                                                           |        2 |     0.250000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest                                        |        2 |     0.250000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeICMPSrcIPDroppedTraceflowIPv4 |        2 |     0.250000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeICMPDstIPLiveTraceflowIPv4    |        1 |     0.125000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeICMPDstIPTraceflowIPv4        |        1 |     0.125000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeTraceflowIPv4                 |        1 |     0.125000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeUDPDstIPTraceflowIPv4         |        1 |     0.125000 |
+| TestTraceflow/testTraceflowIntraNode/traceflowGroupTest/intraNodeUDPDstPodTraceflowIPv4        |        1 |     0.125000 |
++------------------------------------------------------------------------------------------------+----------+--------------+
+Top 10 failures
