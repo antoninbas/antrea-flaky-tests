@@ -1,0 +1,49 @@
++---------------------+-----------------+--------------+
+| SUCCESSFUL ATTEMPTS | FAILED ATTEMPTS | FAILURE RATE |
++---------------------+-----------------+--------------+
+|                   2 |               2 |     0.500000 |
++---------------------+-----------------+--------------+
+Summary
++------------------------------------+-----------------+------+----------+--------------+
+|             TEST NAME              |                 |      | FAILURES | FAILURE RATE |
++------------------------------------+-----------------+------+----------+--------------+
+| TestFlowAggregatorSecureConnection |                 |      |        2 |     0.500000 |
++                                    +-----------------+------+----------+--------------+
+|                                    | clickhouse-http |      |        2 |     0.500000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv4 |        2 |     0.500000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv6 |        1 |     0.250000 |
++                                    +-----------------+------+----------+--------------+
+|                                    | clickhouse-tls  |      |        1 |     0.250000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv4 |        1 |     0.250000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv6 |        1 |     0.250000 |
++                                    +-----------------+------+----------+--------------+
+|                                    | ipfix-mtls      |      |        2 |     0.500000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv4 |        2 |     0.500000 |
++                                    +-----------------+------+----------+--------------+
+|                                    | ipfix-tls       |      |        1 |     0.250000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv4 |        1 |     0.250000 |
++                                    +                 +------+----------+--------------+
+|                                    |                 | IPv6 |        1 |     0.250000 |
++------------------------------------+-----------------+------+----------+--------------+
+All failures
++---------------------------------------------------------+----------+--------------+
+|                        TEST NAME                        | FAILURES | FAILURE RATE |
++---------------------------------------------------------+----------+--------------+
+| TestFlowAggregatorSecureConnection                      |        2 |     0.500000 |
+| TestFlowAggregatorSecureConnection/clickhouse-http      |        2 |     0.500000 |
+| TestFlowAggregatorSecureConnection/clickhouse-http/IPv4 |        2 |     0.500000 |
+| TestFlowAggregatorSecureConnection/ipfix-mtls           |        2 |     0.500000 |
+| TestFlowAggregatorSecureConnection/ipfix-mtls/IPv4      |        2 |     0.500000 |
+| TestFlowAggregatorSecureConnection/clickhouse-http/IPv6 |        1 |     0.250000 |
+| TestFlowAggregatorSecureConnection/clickhouse-tls       |        1 |     0.250000 |
+| TestFlowAggregatorSecureConnection/clickhouse-tls/IPv4  |        1 |     0.250000 |
+| TestFlowAggregatorSecureConnection/clickhouse-tls/IPv6  |        1 |     0.250000 |
+| TestFlowAggregatorSecureConnection/ipfix-tls            |        1 |     0.250000 |
++---------------------------------------------------------+----------+--------------+
+Top 10 failures
